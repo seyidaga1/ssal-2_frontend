@@ -5,9 +5,12 @@ import Link from "next/link"
 import Image from "next/image"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import LanguageSwitcher from "@/components/language-switcher"
+import { useTranslations } from "next-intl"
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const t = useTranslations('header')
 
   return (
     <>
@@ -21,27 +24,30 @@ export default function Header() {
 
             <nav className="flex items-center gap-8">
               <Link href="/" className="text-foreground hover:text-primary transition-colors font-medium">
-                Home
+                {t('home')}
               </Link>
               <Link href="/about" className="text-foreground hover:text-primary transition-colors font-medium">
-                About
+                {t('about')}
               </Link>
               <Link href="/vacancies" className="text-foreground hover:text-primary transition-colors font-medium">
-                Vacancies
+                {t('vacancies')}
               </Link>
               <Link href="/services" className="text-foreground hover:text-primary transition-colors font-medium">
-                Services
+                {t('services')}
               </Link>
               <Link href="/projects" className="text-foreground hover:text-primary transition-colors font-medium">
-                Projects
+                {t('projects')}
               </Link>
             </nav>
 
-            <Button asChild>
-              <Link href="/contact">
-                Contact Us <span className="ml-2">→</span>
-              </Link>
-            </Button>
+            <div className="flex items-center gap-4">
+              <LanguageSwitcher />
+              <Button asChild>
+                <Link href="/contact">
+                  {t('contact')} <span className="ml-2">→</span>
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </header>
@@ -53,9 +59,12 @@ export default function Header() {
             <Link href="/">
               <Image src="/logo.png" alt="Current Logo" width={80} height={50} />
             </Link>
-            <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </Button>
+            <div className="flex items-center gap-2">
+              <LanguageSwitcher />
+              <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+                {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              </Button>
+            </div>
           </div>
         </div>
 
@@ -68,25 +77,25 @@ export default function Header() {
                 className="text-foreground hover:text-primary transition-colors font-medium py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Home
+                {t('home')}
               </Link>
               <Link
                 href="/about"
                 className="text-foreground hover:text-primary transition-colors font-medium py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                About
+                {t('about')}
               </Link>
               <Link
                 href="/services"
                 className="text-foreground hover:text-primary transition-colors font-medium py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Services
+                {t('services')}
               </Link>
               <Button asChild className="w-full mt-4">
                 <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
-                  Contact Us
+                  {t('contact')}
                 </Link>
               </Button>
             </nav>

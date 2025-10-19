@@ -1,0 +1,74 @@
+{
+  "header": {
+    "home": "Ana səhifə",
+    "about": "Haqqımızda",
+    "services": "Xidmətlər",
+    "projects": "Layihələr",
+    "vacancies": "Vakansiyalar",
+    "contact": "Əlaqə"
+  },
+  "hero": {
+    "title": "Elektrik Həlləri üçün Güc",
+    "subtitle": "Current Electricity Services",
+    "description": "Evlər və bizneslər üçün etibarlı, səmərəli və davamlı enerji həlləri.",
+    "cta1": "Pulsuz Qiymət Alın",
+    "cta2": "Ətraflı Məlumat",
+    "learnMore": "Ətraflı",
+    "getStarted": "Başlayın"
+  },
+  "services": {
+    "title": "Xidmətlərimiz",
+    "heading": "Elektrik Xidmətləri",
+    "description": "Yaşayış evlərindən tutmuş kommersiya müəssisələrinə qədər, etibarlı, səmərəli və davamlı enerji həlləri təqdim edirik.",
+    "learnMore": "Ətraflı",
+    "loading": "Xidmətlər yüklənir..."
+  },
+  "projects": {
+    "title": "Layihələrimiz",
+    "heading": "Son Layihələr",
+    "description": "Uğurlu elektrik quraşdırma və layihələr portfelimizi kəşf edin.",
+    "viewAll": "Bütün Layihələrə Bax"
+  },
+  "about": {
+    "title": "Haqqımızda",
+    "heading": "Biz Kimik",
+    "description": "Biz mükəmməlliyi təqdim etməyə sadiq aparıcı elektrik xidməti təminatçısıyıq."
+  },
+  "contact": {
+    "title": "Əlaqə",
+    "heading": "Bizimlə Əlaqə",
+    "name": "Ad",
+    "email": "Email",
+    "message": "Mesaj",
+    "send": "Göndər",
+    "sending": "Göndərilir...",
+    "success": "Mesaj uğurla göndərildi!",
+    "error": "Mesaj göndərilmədi. Yenidən cəhd edin."
+  },
+  "footer": {
+    "description": "SSAL-2 MMC elektrik xətlərinin çəkilməsi, quraşdırılması və təchizatını yerinə yetirən enerji şirkətidir.",
+    "quickLinksTitle": "Sürətli Keçidlər",
+    "home": "Ana səhifə",
+    "about": "Haqqımızda",
+    "services": "Xidmətlər",
+    "contact": "Əlaqə",
+    "contactTitle": "Bizimlə Əlaqə",
+    "followUs": "Bizi İzləyin",
+    "copyright": "© 2025 Current. Bütün hüquqlar qorunur."
+  },
+  "faq": {
+    "title": "Tez-tez Verilən Suallar",
+    "heading": "Suallar"
+  },
+  "vacancies": {
+    "title": "Karyera İmkanları",
+    "heading": "Komandamıza Qoşulun",
+    "apply": "Müraciət Et"
+  },
+  "common": {
+    "backToServices": "Xidmətlərə Qayıt",
+    "loading": "Yüklənir...",
+    "error": "Xəta baş verdi",
+    "readMore": "Ətraflı Oxu"
+  }
+}

@@ -1,8 +1,12 @@
+'use client'
+
 import Image from "next/image"
 import Link from "next/link"
 import { Facebook, Instagram, Linkedin, Youtube, Phone, Mail, MapPin } from "lucide-react"
+import { useTranslations } from "next-intl"
 
 export default function Footer() {
+  const t = useTranslations('footer')
   return (
     <footer className="bg-gray-900 text-gray-300">
       <div className="container mx-auto px-4 py-16">
@@ -16,7 +20,7 @@ export default function Footer() {
               className="mb-4 brightness-0 invert"
             />
             <p className="mb-6 text-sm">
-              SSAL-2 MMC elektrik xətlərinin çəkilməsi, quraşdırılması və təchizatını yerinə yetirən enerji şirkətidir.
+              {t('description')}
             </p>
             <div className="flex gap-3">
               <Link href="#" className="bg-gray-800 hover:bg-primary p-2 rounded-full transition-colors">
@@ -64,33 +68,33 @@ export default function Footer() {
           <div className="lg:col-span-1"></div>
 
           <div className="lg:col-span-2">
-            <h3 className="text-white font-bold mb-4">Sürətli Keçidlər</h3>
+            <h3 className="text-white font-bold mb-4">{t('quickLinksTitle')}</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/" className="hover:text-white transition-colors">
-                  Ana Səhifə
+                  {t('home')}
                 </Link>
               </li>
               <li>
                 <Link href="/about" className="hover:text-white transition-colors">
-                  Haqqımızda
+                  {t('about')}
                 </Link>
               </li>
               <li>
                 <Link href="/services" className="hover:text-white transition-colors">
-                  Servislər
+                  {t('services')}
                 </Link>
               </li>
               <li>
                 <Link href="/contact" className="hover:text-white transition-colors">
-                  Bizimlə Əlaqə
+                  {t('contact')}
                 </Link>
               </li>
             </ul>
           </div>
 
           <div className="lg:col-span-3">
-            <h3 className="text-white font-bold mb-4">Contact US</h3>
+            <h3 className="text-white font-bold mb-4">{t('contactTitle')}</h3>
             <ul className="space-y-4 text-sm">
               <li>
                 <a href="tel:+880123456789" className="flex items-start gap-3 hover:text-white transition-colors">
@@ -123,7 +127,7 @@ export default function Footer() {
 
       <div className="border-t border-gray-800">
         <div className="container mx-auto px-4 py-6">
-          <p className="text-center text-sm">© Copyright 2024 -Current. All Right Reserved</p>
+          <p className="text-center text-sm">{t('copyright')}</p>
         </div>
       </div>
     </footer>

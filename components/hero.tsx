@@ -5,36 +5,26 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ChevronLeft, ChevronRight } from "lucide-react"
+import { useTranslations } from "next-intl"
 
 const slides = [
   {
     id: 1,
     image: "/electricity-power-lines.jpg",
-    title: "Xarici elektrik təchizatı və quraşdırılması",
-    subtitle: "Current Electricity Services",
-    description:
-      "Whether you're a homeowner, business owner, or community leader, we're here to light up your life with sustainable energy solutions that.",
   },
   {
     id: 2,
     image: "/solar-panels-energy.jpg",
-    title: "Power for Seamless Electricity Solutions",
-    subtitle: "Current Electricity Services",
-    description:
-      "Whether you're a homeowner, business owner, or community leader, we're here to light up your life with sustainable energy solutions that.",
   },
   {
     id: 3,
     image: "/electrical-grid-infrastructure.jpg",
-    title: "Power for Seamless Electricity Solutions",
-    subtitle: "Current Electricity Services",
-    description:
-      "Whether you're a homeowner, business owner, or community leader, we're here to light up your life with sustainable energy solutions that.",
   },
 ]
 
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const t = useTranslations('hero')
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -57,7 +47,7 @@ export default function Hero() {
         >
           <Image
             src={slide.image || "/placeholder.svg"}
-            alt={slide.title}
+            alt={t('title')}
             fill
             className="object-cover"
             priority={index === 0}
@@ -66,13 +56,13 @@ export default function Hero() {
 
           <div className="relative container mx-auto px-4 h-full flex items-center">
             <div className="max-w-2xl text-white pl-8 md:pl-12 lg:pl-16">
-              <h5 className="text-lg md:text-xl mb-4 text-yellow-400 font-medium">{slide.subtitle}</h5>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">{slide.title}</h1>
-              <p className="text-lg md:text-xl mb-8 text-gray-200">{slide.description}</p>
+              <h5 className="text-lg md:text-xl mb-4 text-yellow-400 font-medium">{t('subtitle')}</h5>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">{t('title')}</h1>
+              <p className="text-lg md:text-xl mb-8 text-gray-200">{t('description')}</p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" asChild>
                   <Link href="/contact">
-                    Get A Free Estimate <span className="ml-2">→</span>
+                    {t('cta1')} <span className="ml-2">→</span>
                   </Link>
                 </Button>
                 <Button
@@ -82,7 +72,7 @@ export default function Hero() {
                   className="bg-white/10 border-white text-white hover:bg-white hover:text-black"
                 >
                   <Link href="/about">
-                    Discover More <span className="ml-2">→</span>
+                    {t('cta2')} <span className="ml-2">→</span>
                   </Link>
                 </Button>
               </div>

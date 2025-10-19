@@ -5,34 +5,34 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
-const workSteps = [
+const workSteps = [ 
   {
     id: "work1",
     icon: "/power-icon.jpg",
-    title: "Power Path Unveiling Our Process",
-    description:
-      "Our process begins with a thorough assessment of energy needs and goals. Once we understand your requirements, we work closely with you to develop.",
+    title: "Power Path Unveiling Our Process", 
+    description: 
+      "Our process begins with a thorough assessment of energy needs and goals. Once we understand your requirements, we work closely with you to develop.", 
   },
   {
     id: "work2",
     icon: "/flow-icon.jpg",
-    title: "Electro Flow Decoding Our Method",
-    description:
-      "Our process begins with a thorough assessment of energy needs and goals. Once we understand your requirements, we work closely with you to develop.",
+    title: "Electro Flow Decoding Our Method", 
+    description: 
+      "Our process begins with a thorough assessment of energy needs and goals. Once we understand your requirements, we work closely with you to develop.", 
   },
   {
     id: "work3",
     icon: "/engine-icon.png",
-    title: "Energetic Engine Behind Scenes",
-    description:
-      "Our process begins with a thorough assessment of energy needs and goals. Once we understand your requirements, we work closely with you to develop.",
+    title: "Energetic Engine Behind Scenes", 
+    description: 
+      "Our process begins with a thorough assessment of energy needs and goals. Once we understand your requirements, we work closely with you to develop.", 
   },
   {
     id: "work4",
     icon: "/watt-icon.jpg",
-    title: "Watt Works Discover Operations",
-    description:
-      "Our process begins with a thorough assessment of energy needs and goals. Once we understand your requirements, we work closely with you to develop.",
+    title: "Watt Works Discover Operations", 
+    description: 
+      "Our process begins with a thorough assessment of energy needs and goals. Once we understand your requirements, we work closely with you to develop.", 
   },
 ]
 
@@ -45,11 +45,11 @@ export default function HowItWorks() {
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
           <div className="lg:col-span-4">
             <div className="mb-8">
-              <h5 className="text-primary text-lg font-semibold mb-4">How it work</h5>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">How to Work Our Electricity Service</h2>
-              <p className="text-muted-foreground">
-                Throughout the process, transparency & communication, keeping you informed.
-              </p>
+              <h5 className="text-primary text-lg font-semibold mb-4">How it work</h5> 
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">How to Work Our Electricity Service</h2> 
+              <p className="text-muted-foreground"> 
+                Throughout the process, transparency & communication, keeping you informed. 
+              </p> 
             </div>
 
             <div className="space-y-4">
