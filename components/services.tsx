@@ -11,19 +11,22 @@ interface Service {
   image: string | null
 }
 
-export default function Services() {
+interface ServicesProps {
+  limit?: number // Optional prop to limit services shown
+}
+
+export default function Services({ limit }: ServicesProps) {
   const [services, setServices] = useState<Service[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-
 
   useEffect(() => {
     const fetchServices = async () => {
       try {
         const response = await fetch(`${apiUrl}/api/services/`, {
           method: 'GET',
-          credentials: 'include', // Include credentials if your backend requires them
+          credentials: 'include',
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -45,7 +48,12 @@ export default function Services() {
     }
 
     fetchServices()
-  }, [])
+  }, [apiUrl])
+
+  // Determine which services to display
+  const displayedServices = limit ? services.slice(0, limit) : services
+  const hasMoreServices = services.length > (limit || 0)
+
   return (
     <section className="py-16 md:py-24 bg-gray-50">
       <div className="container mx-auto px-4">
@@ -68,35 +76,50 @@ export default function Services() {
             {error}
           </div>
         ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service) => (
-              <div
-              key={service.id}
-              className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow group"
-            >
-              <div className="relative h-64 overflow-hidden">
-                <Image
-                  src={service.image ? (service.image.startsWith('http') ? service.image : `http://127.0.0.1:8000${service.image}`) : "/electrical-service-1.jpg"}
-                  alt={service.title}
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-300"
-                />
-              </div>
-              <div className="p-6">
-                <Link href={`/services/${service.id}`}>
-                  <h4 className="text-xl font-bold mb-3 hover:text-primary transition-colors">{service.title}</h4>
-                </Link>
-                <p className="text-muted-foreground mb-4">{service.description}</p>
-                <Link
-                  href={`/services/${service.id}`}
-                  className="text-primary font-medium hover:underline inline-flex items-center gap-2"
+          <>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {displayedServices.map((service) => (
+                <div
+                  key={service.id}
+                  className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow group"
                 >
-                  Learn More <span>→</span>
+                  <div className="relative h-64 overflow-hidden">
+                    <Image
+                      src={service.image ? (service.image.startsWith('http') ? service.image : `http://127.0.0.1:8000${service.image}`) : "/electrical-service-1.jpg"}
+                      alt={service.title}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <Link href={`/services/${service.id}`}>
+                      <h4 className="text-xl font-bold mb-3 hover:text-primary transition-colors">{service.title}</h4>
+                    </Link>
+                    <p className="text-muted-foreground mb-4">{service.description}</p>
+                    <Link
+                      href={`/services/${service.id}`}
+                      className="text-primary font-medium hover:underline inline-flex items-center gap-2"
+                    >
+                      Learn More <span>→</span>
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Show "View All Services" button if there are more services */}
+            {limit && hasMoreServices && (
+              <div className="text-center mt-12">
+                <Link
+                  href="/services"
+                  className="inline-flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-lg font-semibold hover:bg-primary/90 transition-colors shadow-lg hover:shadow-xl"
+                >
+                  View All Services ({services.length})
+                  <span>→</span>
                 </Link>
               </div>
-            </div>
-          ))}
-          </div>
+            )}
+          </>
         )}
       </div>
     </section>

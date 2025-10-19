@@ -1,6 +1,6 @@
 import Hero from "@/components/hero"
 import HowItWorks from "@/components/how-it-works"
-import Blog from "@/components/blog"
+import Projects from "@/components/projects"
 import Services from "@/components/services"
 import About from "@/components/about"
 import FAQ from "@/components/faq"
@@ -15,8 +15,8 @@ export default function Home() {
       <Header />
       <Hero />
       <HowItWorks />
-      <Blog />
-      <Services />
+      <Projects limit={6}/>
+      <Services limit={3} />
       <About />
       <FAQ />
       <BrandSlider />
