@@ -127,7 +127,7 @@ export default function Footer() {
 
       <div className="border-t border-gray-800">
         <div className="container mx-auto px-4 py-6">
-          <p className="text-center text-sm">{t('copyright')}</p>
+          <p className="text-center text-sm">© Copyright 2024 -Current. All Right Reserved</p>
         </div>
       </div>
     </footer>

@@ -6,10 +6,15 @@ import Footer from "@/components/footer"
 
 interface Service {
   id: number
-  title: string
-  description: string
+  title_az: string
+  title_ru: string
+  title_en: string
+  description_az: string
+  description_ru: string
+  description_en: string
   image: string | null
 }
+
 
 export default async function ServicePage({ params }: { params: { id: string } }) {
   const { id } = params
@@ -42,14 +47,14 @@ export default async function ServicePage({ params }: { params: { id: string } }
 
         <div className="grid md:grid-cols-3 gap-8 items-start">
           <div className="md:col-span-2">
-            <h1 className="text-3xl font-bold mb-4">{service.title}</h1>
-            <p className="text-muted-foreground mb-6">{service.description}</p>
+            <h1 className="text-3xl font-bold mb-4">{service.title_az}</h1>
+            <p className="text-muted-foreground mb-6">{service.description_az}</p>
           </div>
 
           <div className="w-full md:col-span-1">
             <div className="aspect-video relative w-full overflow-hidden rounded-lg bg-gray-100">
               {/* Use a regular img tag if Image throws in some env; Image requires the domain to be allowed in next.config.mjs */}
-              <Image src={imageSrc} alt={service.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
+              <Image src={imageSrc} alt={service.title_az} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
             </div>
           </div>
         </div>

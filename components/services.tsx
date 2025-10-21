@@ -6,8 +6,12 @@ import Link from "next/link"
 
 interface Service {
   id: number
-  title: string
-  description: string
+  title_az: string
+  title_ru: string
+  title_en: string
+  description_az: string
+  description_ru: string
+  description_en: string
   image: string | null
 }
 
@@ -86,16 +90,16 @@ export default function Services({ limit }: ServicesProps) {
                   <div className="relative h-64 overflow-hidden">
                     <Image
                       src={service.image ? (service.image.startsWith('http') ? service.image : `http://127.0.0.1:8000${service.image}`) : "/electrical-service-1.jpg"}
-                      alt={service.title}
+                      alt={service.title_az}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-300"
                     />
                   </div>
                   <div className="p-6">
                     <Link href={`/services/${service.id}`}>
-                      <h4 className="text-xl font-bold mb-3 hover:text-primary transition-colors">{service.title}</h4>
+                      <h4 className="text-xl font-bold mb-3 hover:text-primary transition-colors">{service.title_az}</h4>
                     </Link>
-                    <p className="text-muted-foreground mb-4">{service.description}</p>
+                    <p className="text-muted-foreground mb-4">{service.description_az}</p>
                     <Link
                       href={`/services/${service.id}`}
                       className="text-primary font-medium hover:underline inline-flex items-center gap-2"
