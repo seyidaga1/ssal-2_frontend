@@ -7,8 +7,12 @@ import { Calendar, Tag, Eye } from "lucide-react"
 
 interface Project {
   id: number
-  name: string
-  description: string
+  name_az: string
+  description_az: string
+  name_ru: string
+  description_ru: string
+  name_en: string
+  description_en: string
   is_active: boolean
   main_image: string | null
   main_video: string | null
@@ -103,7 +107,7 @@ export default function Projects({ limit }: ProjectsProps) {
                               : `${apiUrl}${project.main_image}`)
                           : "/electricity-blog-1.jpg"
                       }
-                      alt={project.name} 
+                      alt={project.name_az} 
                       fill 
                       className="object-cover group-hover:scale-110 transition-transform duration-300" 
                     />
@@ -111,7 +115,7 @@ export default function Projects({ limit }: ProjectsProps) {
                   <div className="p-6">
                     <Link href={`/projects/${project.id}`} className="block">
                       <h3 className="text-xl font-bold mb-4 hover:text-primary transition-colors">
-                        {project.name}
+                        {project.name_az}
                       </h3>
                     </Link>
                     <div className="flex flex-wrap gap-4 text-sm text-muted-foreground mb-4">
@@ -127,7 +131,7 @@ export default function Projects({ limit }: ProjectsProps) {
                       )}
                     </div>
                     <p className="text-muted-foreground mb-4 line-clamp-3">
-                      {project.description}
+                      {project.description_az}
                     </p>
                     <Link
                       href={`/projects/${project.id}`}
