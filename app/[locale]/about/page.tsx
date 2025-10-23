@@ -161,10 +161,10 @@ export default function AboutPage() {
                   align: "start",
                   loop: true,
                 }}
-                plugins={[galleryAutoplay.current]}
+                plugins={galleryAutoplay.current ? [galleryAutoplay.current as any] : []}
                 className="w-full"
-                onMouseEnter={() => galleryAutoplay.current.stop()}
-                onMouseLeave={() => galleryAutoplay.current.play()}
+                onMouseEnter={() => galleryAutoplay.current?.stop()}
+                onMouseLeave={() => galleryAutoplay.current?.play()}
               >
                 <CarouselContent className="-ml-4">
                   {galleryImages.map((image, index) => (
@@ -243,10 +243,10 @@ export default function AboutPage() {
                   align: "start",
                   loop: true,
                 }}
-                plugins={[sponsorAutoplay.current]}
+                plugins={sponsorAutoplay.current ? [sponsorAutoplay.current as any] : []}
                 className="w-full"
-                onMouseEnter={() => sponsorAutoplay.current.stop()}
-                onMouseLeave={() => sponsorAutoplay.current.play()}
+                onMouseEnter={() => sponsorAutoplay.current?.stop()}
+                onMouseLeave={() => sponsorAutoplay.current?.play()}
               >
                 <CarouselContent className="-ml-6">
                   {sponsors.map((sponsor, index) => (

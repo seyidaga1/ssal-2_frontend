@@ -6,81 +6,52 @@ import { Zap, Shield, Clock, Award, Users, TrendingUp } from "lucide-react"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 
-export default function ServicesPage() {
-  const services = [
-    {
-      id: "1",
-      title: "Residential Electrical Services",
-      description:
-        "Complete electrical solutions for your home including installations, repairs, and upgrades. Our certified electricians ensure your home's electrical system is safe, efficient, and up to code.",
-      image: "/electrical-service-1.jpg",
-      highlights: ["Wiring & Rewiring", "Panel Upgrades", "Lighting Installation", "Safety Inspections"],
-    },
-    {
-      id: "2",
-      title: "Commercial Electrical Solutions",
-      description:
-        "Professional electrical services for businesses, offices, and commercial properties. We handle everything from new installations to maintenance and emergency repairs with minimal disruption to your operations.",
-      image: "/electrical-service-2.jpg",
-      highlights: ["Office Electrical Systems", "Emergency Lighting", "Power Distribution", "Maintenance Contracts"],
-    },
-    {
-      id: "3",
-      title: "Solar Energy Installation",
-      description:
-        "Harness the power of the sun with our professional solar panel installation services. Reduce your energy bills and carbon footprint with clean, renewable solar energy tailored to your property.",
-      image: "/solar-panels-energy.jpg",
-      highlights: ["Solar Panel Installation", "Battery Storage", "Grid Integration", "Energy Monitoring"],
-    },
-    {
-      id: "4",
-      title: "Smart Home Automation",
-      description:
-        "Transform your home into a smart, connected space with our automation services. Control lighting, climate, security, and more from your smartphone or voice commands for ultimate convenience.",
-      image: "/electrical-service-3.jpg",
-      highlights: ["Smart Lighting", "Voice Control", "Security Integration", "Energy Management"],
-    },
-    {
-      id: "5",
-      title: "EV Charging Station Installation",
-      description:
-        "Professional installation of electric vehicle charging stations for homes and businesses. Fast, reliable charging solutions that make owning an EV more convenient and cost-effective.",
-      image: "/electrical-work-process.jpg",
-      highlights: ["Home Chargers", "Commercial Stations", "Fast Charging", "Smart Charging"],
-    },
-    {
-      id: "6",
-      title: "24/7 Emergency Electrical Services",
-      description:
-        "Round-the-clock emergency electrical services for urgent repairs and power outages. Our rapid response team is available 24/7 to restore your power and ensure your safety.",
-      image: "/electrical-grid-infrastructure.jpg",
-      highlights: ["24/7 Availability", "Rapid Response", "Emergency Repairs", "Power Restoration"],
-    },
-    {
-      id: "7",
-      title: "Industrial Electrical Systems",
-      description:
-        "Heavy-duty electrical solutions for industrial facilities, factories, and manufacturing plants. We design, install, and maintain robust electrical systems that keep your operations running smoothly.",
-      image: "/electricity-power-lines.jpg",
-      highlights: ["High-Voltage Systems", "Motor Controls", "Industrial Automation", "Preventive Maintenance"],
-    },
-    {
-      id: "8",
-      title: "Energy Efficiency Audits",
-      description:
-        "Comprehensive energy audits to identify savings opportunities and improve efficiency. Our experts analyze your energy consumption and provide actionable recommendations to reduce costs.",
-      image: "/power-icon.jpg",
-      highlights: ["Consumption Analysis", "Cost Reduction", "Efficiency Upgrades", "ROI Calculations"],
-    },
-    {
-      id: "9",
-      title: "Backup Power & Generator Systems",
-      description:
-        "Reliable backup power solutions including generator installation and maintenance. Ensure uninterrupted power supply for your home or business during outages with our professional systems.",
-      image: "/engine-icon.png",
-      highlights: ["Generator Installation", "Automatic Transfer", "Maintenance Plans", "Fuel Systems"],
-    },
-  ]
+interface Service {
+  id: number
+  title_az: string
+  title_ru: string
+  title_en: string
+  description_az: string
+  description_ru: string
+  description_en: string
+  image: string | null
+}
+
+async function getServices(locale: string) {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://157.173.118.59';
+  
+  try {
+    const res = await fetch(`${apiUrl}/api/services/`, {
+      cache: "no-store",
+    })
+
+    if (!res.ok) {
+      throw new Error('Failed to fetch services')
+    }
+
+    const data = await res.json()
+    return data
+  } catch (error) {
+    console.error('Error fetching services:', error)
+    return []
+  }
+}
+
+export default async function ServicesPage({ 
+  params 
+}: { 
+  params: { locale: string } 
+}) {
+  const { locale } = await params
+  const servicesData = await getServices(locale)
+  
+  // Map backend data to display format with locale-specific fields
+  const services = servicesData.map((service: Service) => ({
+    id: service.id.toString(),
+    title: locale === 'az' ? service.title_az : locale === 'ru' ? service.title_ru : service.title_en,
+    description: locale === 'az' ? service.description_az : locale === 'ru' ? service.description_ru : service.description_en,
+    image: service.image ? (service.image.startsWith('http') ? service.image : `http://157.173.118.59${service.image}`) : "/electrical-service-1.jpg",
+  }))
 
   const features = [
     {
@@ -180,7 +151,7 @@ export default function ServicesPage() {
           </div>
 
           <div className="max-w-7xl mx-auto space-y-24">
-            {services.map((service, index) => {
+            {services.map((service: any, index: number) => {
               const isEven = index % 2 === 0
               return (
                 <Link key={service.id} href={`/services/${service.id}`} className="block group">
@@ -212,14 +183,6 @@ export default function ServicesPage() {
                         <p className="text-lg text-muted-foreground leading-relaxed text-pretty">
                           {service.description}
                         </p>
-                        <div className="grid grid-cols-2 gap-3">
-                          {service.highlights.map((highlight, idx) => (
-                            <div key={idx} className="flex items-center gap-2">
-                              <div className="w-2 h-2 bg-primary rounded-full" />
-                              <span className="text-sm font-medium">{highlight}</span>
-                            </div>
-                          ))}
-                        </div>
                         <Button className="group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
                           Learn More
                           <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
