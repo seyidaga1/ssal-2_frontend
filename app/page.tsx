@@ -22,6 +22,12 @@ export default function Home() {
       <BrandSlider />
       <Contact />
       <Footer />
+      <HolidayCard
+        isActive={showHolidayCard}
+        imageSrc="./public/holiday-celebration.png"
+        title="Bayramınız Mübarək!"
+        message="Bütün komandamız adından sizə və ailənizə xoşbəxt bayram günləri arzulayırıq!"
+      />
     </main>
   )
 }
