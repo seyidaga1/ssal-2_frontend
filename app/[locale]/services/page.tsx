@@ -180,7 +180,7 @@ export default async function ServicesPage({
                         <h3 className="text-3xl md:text-4xl font-bold text-balance group-hover:text-primary transition-colors duration-300">
                           {service.title}
                         </h3>
-                        <p className="text-lg text-muted-foreground leading-relaxed text-pretty">
+                        <p className="text-lg break-words text-muted-foreground leading-relaxed text-pretty">
                           {service.description}
                         </p>
                         <Button className="group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">

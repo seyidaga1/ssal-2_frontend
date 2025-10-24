@@ -760,7 +760,7 @@ export default async function ServiceDetailPage({ params }: { params: { id: stri
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 max-w-3xl text-balance">
             {title}
           </h1>
-          <p className="text-xl md:text-2xl text-white/95 max-w-2xl leading-relaxed text-pretty">
+          <p className="text-xl break-words md:text-2xl text-white/95 max-w-2xl leading-relaxed text-pretty">
             {description}
           </p>
         </div>
@@ -771,7 +771,7 @@ export default async function ServiceDetailPage({ params }: { params: { id: stri
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Overview</h2>
-            <p className="text-lg text-muted-foreground leading-relaxed text-pretty">{overview}</p>
+            <p className="text-lg break- break-words text-muted-foreground leading-relaxed text-pretty">{overview}</p>
           </div>
         </div>
       </section>
