@@ -8,6 +8,7 @@ import BrandSlider from "@/components/brand-slider"
 import Contact from "@/components/contact"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
+import HolidayCard from '@/components/holiday-card';
 
 export default function Home() {
   return (
@@ -18,16 +19,11 @@ export default function Home() {
       <Projects limit={6}/>
       <Services limit={3} />
       <About />
+      <HolidayCard />
       <FAQ />
       <BrandSlider />
       <Contact />
       <Footer />
-      <HolidayCard
-        isActive={showHolidayCard}
-        imageSrc="./public/holiday-celebration.png"
-        title="Bayramınız Mübarək!"
-        message="Bütün komandamız adından sizə və ailənizə xoşbəxt bayram günləri arzulayırıq!"
-      />
-    </main>
+    </main> 
   )
 }

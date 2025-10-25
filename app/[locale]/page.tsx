@@ -15,7 +15,7 @@ import Footer from "@/components/footer"
 
 export default function Home() {
   // ✅ state əlavə edirik
-  const [showHolidayCard, setShowHolidayCard] = useState(true)
+  const [showHolidayCard, setShowHolidayCard] = useState(false)
 
   return (
     <main className="min-h-screen">
@@ -29,7 +29,6 @@ export default function Home() {
       <BrandSlider />
       <Contact />
       <Footer />
-
       <HolidayCard
         isActive={showHolidayCard}
         imageSrc="/holiday-celebration.png"

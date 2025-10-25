@@ -1,16 +1,16 @@
 "use client"
-
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import LanguageSwitcher from "@/components/language-switcher"
-import { useTranslations } from "next-intl"
+// import LanguageSwitcher from "@/components/language-switcher"
+// import { useTranslations } from "next-intl"
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const t = useTranslations('header')
+
+
 
   return (
     <>
@@ -24,27 +24,27 @@ export default function Header() {
 
             <nav className="flex items-center gap-8">
               <Link href="/" className="text-foreground hover:text-primary transition-colors font-medium">
-                {t('home')}
+                home
               </Link>
               <Link href="/about" className="text-foreground hover:text-primary transition-colors font-medium">
-                {t('about')}
+                about
               </Link>
               <Link href="/vacancies" className="text-foreground hover:text-primary transition-colors font-medium">
-                {t('vacancies')}
+                vacancies
               </Link>
               <Link href="/services" className="text-foreground hover:text-primary transition-colors font-medium">
-                {t('services')}
+                services
               </Link>
               <Link href="/projects" className="text-foreground hover:text-primary transition-colors font-medium">
-                {t('projects')}
+                projects
               </Link>
             </nav>
 
             <div className="flex items-center gap-4">
-              <LanguageSwitcher />
+              
               <Button asChild>
                 <Link href="/contact">
-                  {t('contact')} <span className="ml-2">→</span>
+                  contact <span className="ml-2">→</span>
                 </Link>
               </Button>
             </div>
@@ -60,7 +60,7 @@ export default function Header() {
               <Image src="/logo.png" alt="Current Logo" width={80} height={50} />
             </Link>
             <div className="flex items-center gap-2">
-              <LanguageSwitcher />
+              
               <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
                 {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </Button>
@@ -77,25 +77,25 @@ export default function Header() {
                 className="text-foreground hover:text-primary transition-colors font-medium py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                {t('home')}
+                home
               </Link>
               <Link
                 href="/about"
                 className="text-foreground hover:text-primary transition-colors font-medium py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                {t('about')}
+                about
               </Link>
               <Link
                 href="/services"
                 className="text-foreground hover:text-primary transition-colors font-medium py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                {t('services')}
+                services
               </Link>
               <Button asChild className="w-full mt-4">
                 <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
-                  {t('contact')}
+                  contact
                 </Link>
               </Button>
             </nav>
